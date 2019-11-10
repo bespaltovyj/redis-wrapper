@@ -1,7 +1,7 @@
 package demo.redis.wrapper.data;
 
 import demo.redis.wrapper.converter.IntByteArrConverter;
-import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.ScanParams;
 import redis.clients.jedis.ScanResult;
 import redis.clients.jedis.util.SafeEncoder;
@@ -15,17 +15,17 @@ public class RedisMap implements Map<String, Integer> {
     private static final byte[] DEFAULT_CURSOR = IntByteArrConverter.convert(0);
     private static final Long NO_ACTION_RESULT = 0L;
 
-    private final JedisCluster jedis;
+    private final Jedis jedis;
     private final String mapKey;
     private final byte[] encodedKey;
 
-    RedisMap(JedisCluster jedis, String mapKey) {
+    RedisMap(Jedis jedis, String mapKey) {
         this.jedis = jedis;
         this.mapKey = mapKey;
         this.encodedKey = SafeEncoder.encode(mapKey);
     }
 
-    RedisMap(JedisCluster jedis, String mapKey, Map<String, Integer> hash) {
+    RedisMap(Jedis jedis, String mapKey, Map<String, Integer> hash) {
         this.jedis = jedis;
         this.mapKey = mapKey;
         this.encodedKey = SafeEncoder.encode(mapKey);
