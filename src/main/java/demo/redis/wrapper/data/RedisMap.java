@@ -2,8 +2,6 @@ package demo.redis.wrapper.data;
 
 import demo.redis.wrapper.converter.IntByteArrConverter;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.ScanParams;
-import redis.clients.jedis.ScanResult;
 import redis.clients.jedis.util.SafeEncoder;
 
 import java.util.*;
@@ -12,7 +10,6 @@ import java.util.stream.Collectors;
 
 public class RedisMap implements Map<String, Integer> {
 
-    private static final byte[] DEFAULT_CURSOR = IntByteArrConverter.convert(0);
     private static final Long NO_ACTION_RESULT = 0L;
 
     private final Jedis jedis;
@@ -50,15 +47,12 @@ public class RedisMap implements Map<String, Integer> {
 
     @Override
     public boolean containsValue(Object value) {
-        ScanParams scanParams = new ScanParams();
-        scanParams.match(SafeEncoder.encode(value.toString()));
-        ScanResult<Map.Entry<byte[], byte[]>> result = jedis.hscan(encodedKey, DEFAULT_CURSOR, scanParams);
-        return !result.getResult().isEmpty();
+        return values().contains(value);
     }
 
     @Override
     public Integer get(Object key) {
-        return jedis.hmget(encodedKey, SafeEncoder.encode(key.toString())).stream().findFirst().map(IntByteArrConverter::convert).orElse(null);
+        return jedis.hmget(encodedKey, SafeEncoder.encode(key.toString())).stream().filter(Objects::nonNull).findFirst().map(IntByteArrConverter::convert).orElse(null);
     }
 
     @Override
