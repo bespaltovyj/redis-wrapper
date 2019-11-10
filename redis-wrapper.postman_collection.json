@@ -1,0 +1,970 @@
+{
+	"info": {
+		"_postman_id": "dc00d98a-a096-433a-86ae-fa6117a7713a",
+		"name": "redis-wrapper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list",
+			"item": [
+				{
+					"name": "elements",
+					"item": [
+						{
+							"name": "get element",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/:index",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										":index"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										},
+										{
+											"key": "index",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "contains",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "тест замена",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/contains",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										"contains"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index of",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "contains-value",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/index-of",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										"index-of"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "last index of",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "contains-value",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/last-index-of",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										"last-index-of"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add element",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "contains-value",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add element by index",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "тест добавление",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el?index=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el"
+									],
+									"query": [
+										{
+											"key": "index",
+											"value": "2"
+										}
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "replace element",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "тест замена",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/:index",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										":index"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										},
+										{
+											"key": "index",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove el by index",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/:index",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										":index"
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										},
+										{
+											"key": "index",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove el by value",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "second",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/list/:list_name/el/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"list",
+										":list_name",
+										"el",
+										""
+									],
+									"variable": [
+										{
+											"key": "list_name",
+											"value": "{{default_list_name}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/:list_name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								":list_name"
+							],
+							"variable": [
+								{
+									"key": "list_name",
+									"value": "{{default_list_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/:list_name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								":list_name"
+							],
+							"variable": [
+								{
+									"key": "list_name",
+									"value": "{{default_list_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "size",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/list/:list_name/size",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								":list_name",
+								"size"
+							],
+							"variable": [
+								{
+									"key": "list_name",
+									"value": "{{default_list_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add all",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"first\",\n    \"second\",\n    \"last\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list/:list_name/add-all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								":list_name",
+								"add-all"
+							],
+							"variable": [
+								{
+									"key": "list_name",
+									"value": "{{default_list_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add all by index",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"first\",\n    \"second\",\n    \"last\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/list/:list_name/add-all?index=0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"list",
+								":list_name",
+								"add-all"
+							],
+							"query": [
+								{
+									"key": "index",
+									"value": "0"
+								}
+							],
+							"variable": [
+								{
+									"key": "list_name",
+									"value": "{{default_list_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "map",
+			"item": [
+				{
+					"name": "elements",
+					"item": [
+						{
+							"name": "get element",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/map/:hash_name/key/:field_name",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"map",
+										":hash_name",
+										"key",
+										":field_name"
+									],
+									"variable": [
+										{
+											"key": "hash_name",
+											"value": "{{default_map_name}}"
+										},
+										{
+											"key": "field_name",
+											"value": "first"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "contains key",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/map/:hash_name/key/:field_name/contains",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"map",
+										":hash_name",
+										"key",
+										":field_name",
+										"contains"
+									],
+									"variable": [
+										{
+											"key": "hash_name",
+											"value": "{{default_map_name}}"
+										},
+										{
+											"key": "field_name",
+											"value": "first"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add element",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "6",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/map/:hash_name/key/:field_name",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"map",
+										":hash_name",
+										"key",
+										":field_name"
+									],
+									"variable": [
+										{
+											"key": "hash_name",
+											"value": "{{default_map_name}}"
+										},
+										{
+											"key": "field_name",
+											"value": "new"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove element",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/map/:hash_name/key/:field_name",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"map",
+										":hash_name",
+										"key",
+										":field_name"
+									],
+									"variable": [
+										{
+											"key": "hash_name",
+											"value": "{{default_map_name}}"
+										},
+										{
+											"key": "field_name",
+											"value": "first"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "get map",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crate map",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first\": 0,\n    \"second\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/map/:hash_name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete map",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "keyset",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name/key-set",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name",
+								"key-set"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "values",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name/values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name",
+								"values"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "entry set",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name/entry-set",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name",
+								"entry-set"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "map size",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/map/:hash_name/size",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name",
+								"size"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contians-values",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "66",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/map/:hash_name/contains-values",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"map",
+								":hash_name",
+								"contains-values"
+							],
+							"variable": [
+								{
+									"key": "hash_name",
+									"value": "{{default_map_name}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5c97c538-8f7d-463c-b47a-d649bcffa42f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0b79ce2f-f8c0-4bbf-86b7-a082b0547629",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "39542111-c329-4924-856e-5d97f70d1ffb",
+			"key": "url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "f690a9a7-d96e-498f-a5f0-04e2963c230c",
+			"key": "default_list_name",
+			"value": "default_list",
+			"type": "string"
+		},
+		{
+			"id": "5fb21b33-737a-4dfc-9399-c505f4c1e3f6",
+			"key": "default_map_name",
+			"value": "default_map",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
