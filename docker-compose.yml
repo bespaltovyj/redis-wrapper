@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+
+  redis:
+    image: redis:5.0.6
+    ports:
+      - '6379:6379'
+    restart: always
+    networks:
+      main:
+        aliases:
+          - redis-url
+  redis-wrapper:
+    build: .
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8090:8080"
+    depends_on:
+      - redis
+    networks:
+      main:
+        aliases:
+          - redis-wrapper
+networks:
+  main:
