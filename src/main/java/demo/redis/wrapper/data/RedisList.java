@@ -160,12 +160,13 @@ public class RedisList extends AbstractList<String> {
 
     @Override
     public int lastIndexOf(Object o) {
-        int ind = 0;
-        for (String s : this) {
-            ++ind;
-            if (Objects.equals(o, s)) {
-                return ind;
+        int ind = size();
+        Iterator<String> reverse = new ReverseItr(ind);
+        while (reverse.hasNext()) {
+            if (Objects.equals(reverse.next(), o)) {
+                return ind - 1;
             }
+            --ind;
         }
         return -1;
     }
@@ -259,6 +260,59 @@ public class RedisList extends AbstractList<String> {
             while (hasNext()) {
                 consumer.accept(next());
             }
+        }
+
+        final void checkForComodification() {
+            if (modCount != expectedModCount)
+                throw new ConcurrentModificationException();
+        }
+    }
+
+    private class ReverseItr implements Iterator<String> {
+        int step = 10;
+        int leftBord;
+        int rightBord = -1;
+
+        List<String> localCache;
+        int cursor = Integer.MAX_VALUE;       // index of next element to return
+
+        int expectedModCount = modCount;
+        int totalElements;
+
+        ReverseItr(int totalElements) {
+            this.totalElements = totalElements;
+            leftBord = Math.max(-step - 1, -totalElements);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return leftBord + totalElements <= cursor;
+        }
+
+        @Override
+        public String next() {
+            checkForComodification();
+            if (Objects.isNull(localCache)) {
+                localCache = jedis.lrange(listKey, leftBord, rightBord);
+                cursor = localCache.size() - 1;
+            }
+            int i = cursor;
+            if (i < 0) {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                rightBord = leftBord - 1;
+                if (-Integer.MAX_VALUE + step >= rightBord) {
+                    leftBord = -Integer.MAX_VALUE;
+                } else {
+                    leftBord -= (step + 1);
+                }
+
+                localCache = jedis.lrange(listKey, leftBord, rightBord);
+                i = localCache.size() - 1;
+            }
+            cursor = i - 1;
+            return localCache.get(i);
         }
 
         final void checkForComodification() {
