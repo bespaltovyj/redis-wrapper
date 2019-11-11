@@ -150,10 +150,10 @@ public class RedisList extends AbstractList<String> {
     public int indexOf(Object o) {
         int ind = 0;
         for (String s : this) {
-            ++ind;
             if (Objects.equals(o, s)) {
                 return ind;
             }
+            ++ind;
         }
         return -1;
     }
