@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java:8_jdk
+FROM openjdk:11.0.2
 
 WORKDIR /opt/redis-test
 COPY ./target/redis-client-1.0-SNAPSHOT.jar .
