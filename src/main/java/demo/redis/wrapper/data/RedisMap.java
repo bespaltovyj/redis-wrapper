@@ -57,6 +57,9 @@ public class RedisMap implements Map<String, Integer> {
 
     @Override
     public Integer put(String key, Integer value) {
+        if (size() == Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Map is already max size");
+        }
         Long result = jedis.hset(encodedKey, SafeEncoder.encode(key), IntByteArrConverter.convert(value));
         return value;
     }
@@ -76,6 +79,9 @@ public class RedisMap implements Map<String, Integer> {
 
     @Override
     public void putAll(Map<? extends String, ? extends Integer> m) {
+        if (Integer.MAX_VALUE - m.size() < size()) {
+            throw new IllegalArgumentException("Map is already max size");
+        }
         Map<byte[], byte[]> encodedMap = new HashMap<>(m.size());
         m.forEach((k, v) -> {
             encodedMap.put(SafeEncoder.encode(k), IntByteArrConverter.convert(v));
